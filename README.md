@@ -37,8 +37,8 @@ Json - easy to maintaine and manipulate the data.
 * Singleton — Services are created once for the lifetime of the application. It uses the same instance for the whole application.
 
 # Practical Assignment
-npm install node modules on server and client
-npm start the server
-npm start the client
+npm install node modules on server and client*
+npm start the server*
+npm start the client*
 
 
