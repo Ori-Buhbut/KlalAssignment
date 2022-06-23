@@ -1,2 +1,3 @@
 ./node_modules
 /BACKEND/sever/node_modules/
+/BACKEND/server/node_modules/
