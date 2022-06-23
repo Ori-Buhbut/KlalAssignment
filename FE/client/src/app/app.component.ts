@@ -9,6 +9,7 @@ import Employee from 'src/models/employee';
 import { DataService } from 'src/services/data.service';
 import * as moment from 'moment';
 import Task from 'src/models/task';
+import { AppConstants } from 'src/constants/data';
 
 
 
@@ -18,6 +19,7 @@ import Task from 'src/models/task';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  fakeData: any = AppConstants.fakeData; 
   tasks: Task[] = [];
   departments: Department[] = [];
   employees: Employee[] = [];
@@ -36,6 +38,14 @@ export class AppComponent {
       this.departments = res[1];
       this.tasks = res[2];
       this.treeDataSource.data = this.list_to_tree(res[1]);
+      this.dataSourceTable = new MatTableDataSource<Task>(this.tasks);
+      this.dataSourceTable.paginator = this.paginator;
+    }, err=>{
+      alert("express.js server is not running, using local data");
+      this.employees = this.fakeData.employees;
+      this.departments = this.fakeData.departments;
+      this.tasks = this.fakeData.tasks;
+      this.treeDataSource.data = this.list_to_tree(this.departments);
       this.dataSourceTable = new MatTableDataSource<Task>(this.tasks);
       this.dataSourceTable.paginator = this.paginator;
     })
@@ -77,8 +87,8 @@ export class AppComponent {
   onNodeClick(node: Department) {
     this.selectedNode = node.DepartmentName;
     let treeToList = this.tree_to_list(this.departments.filter(t => t.DepartmentID == node.DepartmentID), []);
-    console.log(treeToList);
     this.dataSourceTable.data = this.tasks.filter(t=> treeToList.some(row=> row.DepartmentID == t.DepartmentID));
+    this.selectedEmployee = "";
   }
 
   onEmployeeSelectionChange(e: MatSelectChange) {

@@ -1,7 +1,5 @@
-# KlalAssignment
+# Theoretical Assignment
 
-
-Theoretical Assignment:
 
 1. Not an SQL Expert..
   
@@ -37,3 +35,10 @@ Json - easy to maintaine and manipulate the data.
 * Transient — Services are created each time they are requested. It gets a new instance of the injected object, on each request of this object. For each time you inject this object is injected in the class, it will create a new instance.
 * Scoped — Services are created on each request (once per request). This is most recommended for WEB applications. So for example, if during a request you use the same dependency injection, in many places, you will use the same instance of that object, it will make reference to the same memory allocation.
 * Singleton — Services are created once for the lifetime of the application. It uses the same instance for the whole application.
+
+# Practical Assignment
+npm install node modules on server and client
+npm start the server
+npm start the client
+
+
